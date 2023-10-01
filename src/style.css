@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, Helvetica, sans-serif;
+}
+
+/** START PAGE STYLES **/
+
+.start-page-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+}
+
+.start-page-plane {
+    width: 50%;
+    margin: 30px;
+}
+
+.start-page-left-col {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 70px;
+    background-image: url(/src/assets/beach.png);
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+
+}
+
+.start-page-right-col {
+    background-color: rgb(187, 238, 251);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-page-right-col form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+}
+
+.start-page-right-col form input {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+}
+
+.start-page-right-col form button {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgb(0, 174, 255);
+    border: none;
+    color: #fff;
+}
+
+@media only screen and (max-width: 600px){
+    .start-page-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        justify-items: center;
+        height: 100vh;
+    } 
+
+    .start-page-left-col {
+        padding: 30px;
+    }
+}
+
