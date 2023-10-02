@@ -7,7 +7,14 @@
     font-family: Inter, Helvetica, sans-serif;
 }
 
+button:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+    transition: .3s ease-in-out;
+}
+
 /** START PAGE STYLES **/
+
 
 .start-page-grid {
     display: grid;
@@ -39,7 +46,7 @@
 }
 
 .start-page-right-col {
-    background-color: rgb(187, 238, 251);
+    background-color: #cbe2ff;
     height: 100%;
     width: 100%;
     display: flex;
@@ -63,10 +70,169 @@
 .start-page-right-col form button {
     padding: 10px;
     border-radius: 12px;
-    background-color: rgb(0, 174, 255);
+    background-color: rgb(21, 21, 123);
     border: none;
     color: #fff;
 }
+
+/** TRIP PAGE STYLES **/
+.trips-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7e7e7;
+    background-image: url(/src/assets/colosseum.png);
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    transition: 5s;
+
+    animation-name: animate;
+    animation-direction: alternate-reverse;
+    animation-duration: 30s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animate {
+    0% {
+        background-image: url(/src/assets/chichen.png);
+    } 20% {
+        background-image: url(/src/assets/taj.png);
+    } 40% {
+        background-image: url(/src/assets/wall.png);
+    } 60% {
+        background-image: url(/src/assets/christ.png); 
+    }  80% {
+        background-image: url(/src/assets/petra.png); 
+    }  100% {
+        background-image: url(/src/assets/giza.png); 
+    }
+}
+
+.subtitle {
+    margin-bottom: 30px;
+}
+
+
+.trip-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.trip-row:first-child {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.trip-row:last-child {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.trip-row:nth-child(odd){
+    background-color: #e5e5e5;
+}
+
+.trip-row:nth-child(even){
+    background-color: #c0e6ff;
+}
+
+.trip-row button {
+    padding: 10px;
+    height: 80%;
+    margin: 0 10px;
+    border-radius: 12px;
+    border: none;
+}
+
+.view-trip-details-btn {
+    color: #fff;
+    background-color: rgb(21, 21, 123);
+}
+
+.add-flight-info-btn {
+    color: #fff;
+    background-color: rgb(0, 96, 128);
+}
+
+.add-hotel-info-btn {
+    color: #fff;
+    background-color: #6244BB;
+}
+
+/** FLIGHT MODAL STYLES **/
+.flight-modal-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e8e8e8;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.flight-modal-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 350px;
+    padding: 20px;
+}
+
+.flight-modal-container form label {
+    color: #000000;
+}
+
+.flight-modal-container form input {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+}
+
+.submit-flight-info-btn {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgb(0, 96, 128);
+    border: none;
+    color: #fff;
+}
+
+.success-msg {
+    color: forestgreen;
+}
+
+.failure-msg {
+    color: red;
+}
+
+.fa-x {
+    position: relative;
+    right: -290px;
+    background-color: red;
+    color: #fff;
+    padding: 8px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.fa-x:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+    transition: .3s ease-in-out;
+}
+
+
 
 @media only screen and (max-width: 600px){
     .start-page-grid {

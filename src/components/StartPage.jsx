@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react'
 import { Form, redirect, useActionData } from 'react-router-dom';
+
 
 const StartPage = () => {
 
@@ -47,10 +49,19 @@ export const handleSubmit = async ({ request }) => {
 
     console.log(submission);
 
-    // send post request
+    //error handling necessary
     if (submission.tripName == '') {
         return { error: 'Must fill out trip name.' }
     }
+
+    // send post request
+    axios.post('http://localhost:8080/trips/addTrip', submission)
+    .then((res) => {
+        console.log(res);
+    })
+    .catch((err) => {
+        console.log("THERE WAS AN ERROR" ,err)
+    })
 
     //redirect the user
     return redirect('/trips')
