@@ -37,25 +37,25 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
             })
     }
 
-    function handleDepartingFromChange(e) {
-        setDepartingFrom(...departingFrom, e.target.value)
-    }
+    // function handleDepartingFromChange(e) {
+    //     setDepartingFrom(...departingFrom, e.target.value)
+    // }
 
-    function handleSetArrivalToChange(e) {
-        setArrivalTo(...arrivalTo, e.target.value)
-    }
+    // function handleSetArrivalToChange(e) {
+    //     setArrivalTo(...arrivalTo, e.target.value)
+    // }
 
-    function handleFlightPriceChange(e) {
-        setFlightPrice(...flightPrice, e.target.value)
-    }
+    // function handleFlightPriceChange(e) {
+    //     setFlightPrice(...flightPrice, e.target.value)
+    // }
 
-    function handleDepartureDateChange(e) {
-        setDepartureDate(...departureDate, e.target.value)
-    }
+    // function handleDepartureDateChange(e) {
+    //     setDepartureDate(...departureDate, e.target.value)
+    // }
 
-    function handleReturnDateChange(e) {
-        setReturnDate(...returnDate, e.target.value)
-    }
+    // function handleReturnDateChange(e) {
+    //     setReturnDate(...returnDate, e.target.value)
+    // }
 
 
     return (
@@ -64,15 +64,15 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { setFlightModalActive(false) }}></i>
                 <h3>Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" name='departingFrom' placeholder='e.g. Boston' onChange={handleDepartingFromChange} required />
+                <input type="text" name='departingFrom' placeholder='e.g. Boston' onChange={(e)=> setDepartingFrom(e.target.value)} required />
                 <label htmlFor="arrival-to">Arrival To:</label>
-                <input type="text" name='arrivalTo' placeholder='e.g. Dublin' onChange={handleSetArrivalToChange} required />
+                <input type="text" name='arrivalTo' placeholder='e.g. Dublin' onChange={(e) => setArrivalTo(e.target.value)} required />
                 <label htmlFor="departure-date">Departure Date:</label>
-                <input type="date" name="departure-date" id="departureDate" onChange={handleDepartureDateChange} required />
+                <input type="date" name="departure-date" id="departureDate" onChange={(e) => setDepartureDate(e.target.value)} required />
                 <label htmlFor="return-date">Return Date:</label>
-                <input type="date" name="return-date" id="returnDate" onChange={handleReturnDateChange} required />
+                <input type="date" name="return-date" id="returnDate" onChange={(e)=> setReturnDate(e.target.value)} required />
                 <label htmlFor="flight-price">Flight Price:</label>
-                <input type="number" name="flightPrice" id="flight-price" placeholder='e.g. 599.99' onChange={handleFlightPriceChange} required />
+                <input type="number" name="flightPrice" id="flight-price" step="any" placeholder='e.g. 599.99' onChange={(e)=> setFlightPrice(e.target.value)} required />
                 <button className="submit-flight-info-btn">Add Flight Info</button>
                 {successMsg && <p className='success-msg'>Flight Info Added!</p>}
                 {failureMsg && <p className='failure-msg'>ERROR: Flight could not be added.</p>}
