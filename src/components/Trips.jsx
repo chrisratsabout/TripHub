@@ -2,16 +2,25 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import FlightModal from './Modals/FlightModal'
+import HotelModal from './Modals/HotelModal'
 
 const Trips = () => {
   const [tripsList, setTripsList] = useState([]);
   const [flightModalActive, setFlightModalActive] = useState(false);
+  const [hotelModalActive, setHotelModalActive] = useState(false);
+
   const [tripId, setTripId] = useState(null)
 
-  function showFlightModal(e){
+  function showFlightModal(e) {
     console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
     setFlightModalActive(true);
+  }
+
+  function showHotelModal(e) {
+    console.log(e.target.parentElement.dataset.id);
+    setTripId(e.target.parentElement.dataset.id);
+    setHotelModalActive(true);
   }
 
   useEffect(() => {
@@ -38,16 +47,22 @@ const Trips = () => {
               </div>
               <button className="view-trip-details-btn">View Trip Details</button>
               <button className="add-flight-info-btn" onClick={showFlightModal}>Add Flight Info</button>
-              <button className="add-hotel-info-btn">Add Hotel Info</button>
+              <button className="add-hotel-info-btn" onClick={showHotelModal}>Add Hotel Info</button>
             </div>
           ))}
         </div>
-        {flightModalActive && <FlightModal 
-        setFlightModalActive={setFlightModalActive}
-        tripId={tripId}
+        {flightModalActive && <FlightModal
+          setFlightModalActive={setFlightModalActive}
+          tripId={tripId}
         />}
+        {
+          hotelModalActive && <HotelModal
+            setHotelModalActive={setHotelModalActive}
+            tripId={tripId}
+          />
+        }
       </div>
-      
+
 
     </>
 

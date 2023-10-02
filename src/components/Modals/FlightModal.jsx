@@ -4,13 +4,13 @@ import axios from 'axios'
 
 const FlightModal = ({ setFlightModalActive, tripId }) => {
 
-    const [departingFrom, setDepartingFrom] = useState('')
-    const [arrivalTo, setArrivalTo] = useState('')
-    const [flightPrice, setFlightPrice] = useState('')
-    const [departureDate, setDepartureDate] = useState('')
-    const [returnDate, setReturnDate] = useState('')
-    const [successMsg, setSuccessMsg] = useState(false)
-    const [failureMsg, setFailureMsg] = useState(false)
+    const [departingFrom, setDepartingFrom] = useState('');
+    const [arrivalTo, setArrivalTo] = useState('');
+    const [flightPrice, setFlightPrice] = useState('');
+    const [departureDate, setDepartureDate] = useState('');
+    const [returnDate, setReturnDate] = useState('');
+    const [successMsg, setSuccessMsg] = useState(false);
+    const [failureMsg, setFailureMsg] = useState(false);
 
     function handleFlightSubmit(e) {
         e.preventDefault();
@@ -26,7 +26,7 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
                 }, 800)
 
                 setTimeout(() => {
-                    setFlightModalActive(false)
+                    setFlightModalActive(false);
                 }, 3000)
             })
             .catch((err) => {
@@ -36,27 +36,6 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
                 }, 500)
             })
     }
-
-    // function handleDepartingFromChange(e) {
-    //     setDepartingFrom(...departingFrom, e.target.value)
-    // }
-
-    // function handleSetArrivalToChange(e) {
-    //     setArrivalTo(...arrivalTo, e.target.value)
-    // }
-
-    // function handleFlightPriceChange(e) {
-    //     setFlightPrice(...flightPrice, e.target.value)
-    // }
-
-    // function handleDepartureDateChange(e) {
-    //     setDepartureDate(...departureDate, e.target.value)
-    // }
-
-    // function handleReturnDateChange(e) {
-    //     setReturnDate(...returnDate, e.target.value)
-    // }
-
 
     return (
         <div className="flight-modal-container">

@@ -46,7 +46,7 @@ button:hover {
 }
 
 .start-page-right-col {
-    background-color: #cbe2ff;
+    background-color: #aed2ff;
     height: 100%;
     width: 100%;
     display: flex;
@@ -88,32 +88,10 @@ button:hover {
     background-size: cover;
     background-repeat: none;
     background-position: center;
-    transition: 5s;
 
-    animation-name: animate;
-    animation-direction: alternate-reverse;
-    animation-duration: 30s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation-timing-function: ease-in-out;
 }
 
-@keyframes animate {
-    0% {
-        background-image: url(/src/assets/chichen.png);
-    } 20% {
-        background-image: url(/src/assets/taj.png);
-    } 40% {
-        background-image: url(/src/assets/wall.png);
-    } 60% {
-        background-image: url(/src/assets/christ.png); 
-    }  80% {
-        background-image: url(/src/assets/petra.png); 
-    }  100% {
-        background-image: url(/src/assets/giza.png); 
-    }
-}
+
 
 .subtitle {
     margin-bottom: 30px;
@@ -169,7 +147,7 @@ button:hover {
 }
 
 /** FLIGHT MODAL STYLES **/
-.flight-modal-container{
+.flight-modal-container, .hotel-modal-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -181,7 +159,7 @@ button:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.flight-modal-container form {
+.flight-modal-container form, .hotel-modal-container form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -189,11 +167,11 @@ button:hover {
     padding: 20px;
 }
 
-.flight-modal-container form label {
+.flight-modal-container form label, .hotel-modal-container form label {
     color: #000000;
 }
 
-.flight-modal-container form input {
+.flight-modal-container form input, .hotel-modal-container form input {
     padding: 10px;
     border-radius: 12px;
     border: none;
@@ -203,6 +181,14 @@ button:hover {
     padding: 10px;
     border-radius: 12px;
     background-color: rgb(0, 96, 128);
+    border: none;
+    color: #fff;
+}
+
+.submit-hotel-info-btn {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #6244BB;
     border: none;
     color: #fff;
 }
@@ -246,5 +232,7 @@ button:hover {
     .start-page-left-col {
         padding: 30px;
     }
+
+
 }
 
