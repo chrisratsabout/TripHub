@@ -46,7 +46,7 @@ button:hover {
 }
 
 .start-page-right-col {
-    background-color: #aed2ff;
+    background-color: #93d1fa;
     height: 100%;
     width: 100%;
     display: flex;
@@ -88,7 +88,7 @@ button:hover {
     background-size: cover;
     background-repeat: none;
     background-position: center;
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -116,11 +116,11 @@ button:hover {
 }
 
 .trip-row:nth-child(odd){
-    background-color: #e5e5e5;
+    background-color: #93d1fa;
 }
 
 .trip-row:nth-child(even){
-    background-color: #c0e6ff;
+    background-color: #8bbefc;
 }
 
 .trip-row button {
@@ -201,21 +201,68 @@ button:hover {
     color: red;
 }
 
-.fa-x {
+.close-flight-modal-btn,
+.close-hotel-modal-btn {
     position: relative;
     right: -290px;
-    background-color: red;
-    color: #fff;
+    color: #ff0000;
     padding: 8px;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
 }
 
 .fa-x:hover {
     cursor: pointer;
     filter: brightness(85%);
     transition: .3s ease-in-out;
+}
+
+/**TRIP DETAILS MODAL */
+.trip-details-modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e8e8e8;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 350px;
+}
+
+.close-travel-details-modal-btn {
+    position: relative;
+    right: -235px;
+    color: #ff0000;
+    padding: 8px;
+}
+
+.close-travel-details-modal-btn:hover {
+    cursor: pointer;
+    filter: brightness(85%);
+    transition: .3s ease-in-out;
+}
+
+.trip-details-top-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.trip-details-bottom-container {
+    display: flex;
+    gap: 60px;
+}
+
+.trip-details-bottom-left-container h5,
+.trip-details-bottom-right-container h5 {
+    margin-bottom: 10px;
+}
+
+.trip-details-bottom-left-container p,
+.trip-details-bottom-right-container p{
+margin-bottom: 10px;
 }
 
 

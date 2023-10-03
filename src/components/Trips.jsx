@@ -3,13 +3,22 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import FlightModal from './Modals/FlightModal'
 import HotelModal from './Modals/HotelModal'
+import TripDetailsModal from './Modals/TripDetailsModal'
+import { Link } from 'react-router-dom'
 
 const Trips = () => {
   const [tripsList, setTripsList] = useState([]);
   const [flightModalActive, setFlightModalActive] = useState(false);
   const [hotelModalActive, setHotelModalActive] = useState(false);
+  const [tripDetailsModalActive, setTripDetailsModalActive] = useState(false);
 
   const [tripId, setTripId] = useState(null)
+
+  function showTripDetailsModal(e) {
+    console.log(e.target.parentElement.dataset.id);
+    setTripId(e.target.parentElement.dataset.id);
+    setTripDetailsModalActive(true);
+  }
 
   function showFlightModal(e) {
     console.log(e.target.parentElement.dataset.id);
@@ -24,13 +33,25 @@ const Trips = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:8080/trips')
-      .then(res => {
-        setTripsList(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // axios.get('http://localhost:8080/trips')
+    //   .then(res => {
+    //     setTripsList(res.data)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+    const getData = async () => {
+      axios.get('http://localhost:8080/trips')
+        .then(res => {
+          setTripsList(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+
+    getData();
 
   }, [])
 
@@ -45,12 +66,14 @@ const Trips = () => {
                 <h3>{trip.tripName}</h3>
                 <p>{trip.startDate} to {trip.endDate}</p>
               </div>
-              <button className="view-trip-details-btn">View Trip Details</button>
+              <button className="view-trip-details-btn" onClick={showTripDetailsModal}>View Trip Details</button>
               <button className="add-flight-info-btn" onClick={showFlightModal}>Add Flight Info</button>
               <button className="add-hotel-info-btn" onClick={showHotelModal}>Add Hotel Info</button>
             </div>
           ))}
         </div>
+        <h2>Planning another trip?</h2>
+        <Link to={"/"}><button className="add-new-trip">Add Trip on Start Page</button></Link>
         {flightModalActive && <FlightModal
           setFlightModalActive={setFlightModalActive}
           tripId={tripId}
@@ -58,6 +81,12 @@ const Trips = () => {
         {
           hotelModalActive && <HotelModal
             setHotelModalActive={setHotelModalActive}
+            tripId={tripId}
+          />
+        }
+        {
+          tripDetailsModalActive && <TripDetailsModal
+            setTripDetailsModalActive={setTripDetailsModalActive}
             tripId={tripId}
           />
         }

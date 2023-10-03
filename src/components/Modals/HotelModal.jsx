@@ -39,7 +39,7 @@ const HotelModal = ({ setHotelModalActive, tripId }) => {
    <>
            <div className="hotel-modal-container">
             <form onSubmit={handleHotelSubmit}>
-                <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { setHotelModalActive(false) }}></i>
+                <i className="fa-solid fa-x close-hotel-modal-btn" onClick={() => { setHotelModalActive(false) }}></i>
                 <h3>Hotel Info:</h3>
                 <label htmlFor="hotel-name">Hotel Name:</label>
                 <input type="text" name='hotel-name' placeholder='e.g. Four Seasons' onChange={(e)=> setHotelName(e.target.value)} required />
