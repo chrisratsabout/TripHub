@@ -59,6 +59,7 @@ const Trips = () => {
     <>
       <div className="trips-container">
         <h1 className='subtitle'>My Trips</h1>
+        <p className='instructions'>Add flight and hotel info first. Then view, modify, <br></br>and delete information by clicking "View Trip Details".</p>
         <div className="trip-table">
           {tripsList.map((trip) => (
             <div className="trip-row" key={trip.tripId} data-id={trip.tripId}>
@@ -72,8 +73,8 @@ const Trips = () => {
             </div>
           ))}
         </div>
-        <h2>Planning another trip?</h2>
-        <Link to={"/"}><button className="add-new-trip">Add Trip on Start Page</button></Link>
+        <h2 className='planning-another-trip'>Planning another trip?</h2>
+        <Link to={"/"}><button className="add-new-trip-btn">Add Trip on Start Page</button></Link>
         {flightModalActive && <FlightModal
           setFlightModalActive={setFlightModalActive}
           tripId={tripId}

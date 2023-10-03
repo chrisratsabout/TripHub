@@ -46,7 +46,8 @@ button:hover {
 }
 
 .start-page-right-col {
-    background-color: #93d1fa;
+    /* background-color: #93d1fa; */
+    background-image: linear-gradient(to right, #e0e0e0 , #93d1fa);
     height: 100%;
     width: 100%;
     display: flex;
@@ -58,7 +59,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     width: 50%;
+    min-width: 350px;
     gap: 10px;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .start-page-right-col form input {
@@ -83,12 +89,19 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #e7e7e7;
-    background-image: url(/src/assets/colosseum.png);
+    background-color: #f5f5f5;
+    background-image: url(/src/assets/world.png);
     background-size: cover;
     background-repeat: none;
     background-position: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.trips-container .instructions {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    
 }
 
 
@@ -97,6 +110,9 @@ button:hover {
     margin-bottom: 30px;
 }
 
+.trip-info {
+    margin-right: 10px;
+}
 
 .trip-row {
     display: flex;
@@ -144,6 +160,19 @@ button:hover {
 .add-hotel-info-btn {
     color: #fff;
     background-color: #6244BB;
+}
+
+.planning-another-trip {
+    margin-top: 20px;
+}
+
+.add-new-trip-btn {
+    margin-top: 20px;
+    padding: 10px;
+    height: 80%;
+    border-radius: 12px;
+    border: none;
+    background-color: #ffa200;
 }
 
 /** FLIGHT MODAL STYLES **/
@@ -194,10 +223,14 @@ button:hover {
 }
 
 .success-msg {
+    display: block;
+    margin: 10px auto;
     color: forestgreen;
 }
 
 .failure-msg {
+    display: block;
+    margin: 10px auto;
     color: red;
 }
 
@@ -265,6 +298,29 @@ button:hover {
 margin-bottom: 10px;
 }
 
+.trip-details-modal-container button {
+    padding: 10px;
+    border-radius: 12px;
+    color: #fff;
+    width: 50%;
+    display: block;
+    margin: 5px auto; 
+}
+
+.update-trip-details-btn {
+    background-color: #f1a100;
+    border: none;
+}
+
+.delete-trip-details-btn {
+    background-color: #bb4444;
+    border: none;
+}
+
+.close-trip-details-btn {
+    background-color: #3f3f3f;
+    border: none;
+}
 
 
 @media only screen and (max-width: 600px){
@@ -278,6 +334,16 @@ margin-bottom: 10px;
 
     .start-page-left-col {
         padding: 30px;
+    }
+
+    .start-page-right-col {
+        /* background-color: #93d1fa; */
+        background-image: linear-gradient( #e0e0e0 , #93d1fa);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 
