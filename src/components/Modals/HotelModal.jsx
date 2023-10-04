@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 
-const HotelModal = ({ setHotelModalActive, tripId }) => {
+const HotelModal = ({ openModal, tripId }) => {
     const [hotelName, setHotelName] = useState('');
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
@@ -23,7 +23,7 @@ const HotelModal = ({ setHotelModalActive, tripId }) => {
             }, 800)
 
             setTimeout(() => {
-                setHotelModalActive(false);
+               openModal(null);
             }, 3000)
         })
         .catch (err => {
@@ -39,7 +39,7 @@ const HotelModal = ({ setHotelModalActive, tripId }) => {
    <>
            <div className="hotel-modal-container">
             <form onSubmit={handleHotelSubmit}>
-                <i className="fa-solid fa-x close-hotel-modal-btn" onClick={() => { setHotelModalActive(false) }}></i>
+                <i className="fa-solid fa-x close-hotel-modal-btn" onClick={() => { openModal(null) }}></i>
                 <h3>Hotel Info:</h3>
                 <label htmlFor="hotel-name">Hotel Name:</label>
                 <input type="text" name='hotel-name' placeholder='e.g. Four Seasons' onChange={(e)=> setHotelName(e.target.value)} required />

@@ -8,28 +8,32 @@ import { Link } from 'react-router-dom'
 
 const Trips = () => {
   const [tripsList, setTripsList] = useState([]);
-  const [flightModalActive, setFlightModalActive] = useState(false);
-  const [hotelModalActive, setHotelModalActive] = useState(false);
-  const [tripDetailsModalActive, setTripDetailsModalActive] = useState(false);
+  // const [flightModalActive, setFlightModalActive] = useState(false);
+  // const [hotelModalActive, setHotelModalActive] = useState(false);
+  // const [tripDetailsModalActive, setTripDetailsModalActive] = useState(false);
+  const [currentModal, openModal] = useState(null);
 
   const [tripId, setTripId] = useState(null)
 
   function showTripDetailsModal(e) {
     console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
-    setTripDetailsModalActive(true);
+    openModal('tripDetailsModal')
+    // setTripDetailsModalActive(true);
   }
 
   function showFlightModal(e) {
     console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
-    setFlightModalActive(true);
+    openModal('flightModal');
+    // setFlightModalActive(true);
   }
 
   function showHotelModal(e) {
     console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
-    setHotelModalActive(true);
+    openModal('hotelModal')
+    // setHotelModalActive(true);
   }
 
   useEffect(() => {
@@ -75,21 +79,21 @@ const Trips = () => {
         </div>
         <h2 className='planning-another-trip'>Planning another trip?</h2>
         <Link to={"/"}><button className="add-new-trip-btn">Add Trip on Start Page</button></Link>
-        {flightModalActive && <FlightModal
-          setFlightModalActive={setFlightModalActive}
+        {currentModal === 'flightModal' ? <FlightModal
+          openModal={openModal}
           tripId={tripId}
-        />}
+        /> : null}
         {
-          hotelModalActive && <HotelModal
-            setHotelModalActive={setHotelModalActive}
-            tripId={tripId}
-          />
+          currentModal === 'hotelModal' ? <HotelModal
+          openModal={openModal}
+            tripId={tripId} 
+          /> : null
         }
         {
-          tripDetailsModalActive && <TripDetailsModal
-            setTripDetailsModalActive={setTripDetailsModalActive}
+          currentModal === 'tripDetailsModal' ? <TripDetailsModal
+          openModal={openModal}
             tripId={tripId}
-          />
+          /> : null
         }
       </div>
 

@@ -42,7 +42,6 @@ button:hover {
     background-size: cover;
     background-repeat: none;
     background-position: center;
-
 }
 
 .start-page-right-col {
@@ -76,7 +75,7 @@ button:hover {
 .start-page-right-col form button {
     padding: 10px;
     border-radius: 12px;
-    background-color: rgb(21, 21, 123);
+    background-color: #ffa200;
     border: none;
     color: #fff;
 }
@@ -307,18 +306,26 @@ margin-bottom: 10px;
     margin: 5px auto; 
 }
 
-.update-trip-details-btn {
-    background-color: #f1a100;
+
+
+
+.close-trip-details-btn {
+    background-color: #3f3f3f;
+    border: none;
+}
+
+.update-flight-btn {
+    background-color: rgb(0, 96, 128);
+    border: none; 
+}
+
+.update-hotel-btn {
+    background-color: #6244BB;
     border: none;
 }
 
 .delete-trip-details-btn {
     background-color: #bb4444;
-    border: none;
-}
-
-.close-trip-details-btn {
-    background-color: #3f3f3f;
     border: none;
 }
 

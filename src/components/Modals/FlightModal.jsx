@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const FlightModal = ({ setFlightModalActive, tripId }) => {
+const FlightModal = ({ openModal, tripId }) => {
 
     const [departingFrom, setDepartingFrom] = useState('');
     const [arrivalTo, setArrivalTo] = useState('');
@@ -26,7 +26,7 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
                 }, 800)
 
                 setTimeout(() => {
-                    setFlightModalActive(false);
+                    openModal(null)
                 }, 3000)
             })
             .catch((err) => {
@@ -40,7 +40,7 @@ const FlightModal = ({ setFlightModalActive, tripId }) => {
     return (
         <div className="flight-modal-container">
             <form onSubmit={handleFlightSubmit}>
-                <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { setFlightModalActive(false) }}></i>
+                <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openModal(null) }}></i>
                 <h3>Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
                 <input type="text" name='departingFrom' placeholder='e.g. Boston' onChange={(e)=> setDepartingFrom(e.target.value)} required />
