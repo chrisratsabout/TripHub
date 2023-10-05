@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import UpdateFlightModal from './UpdateFlightModal'
+import UpdateHotelModal from './UpdateHotelModal'
 
 
 
@@ -20,6 +21,7 @@ const TripDetailsModal = ({ openModal, tripId }) => {
 
     function openUpdateHotelModal(e) {
         console.log(e.target.dataset.id)
+        openChildModal('updateHotelModal')
     }
 
 
@@ -102,11 +104,16 @@ const TripDetailsModal = ({ openModal, tripId }) => {
 
             </div>
 
-                {childModal === 'updateFlightModal' ? <UpdateFlightModal 
-                openChildModal={openChildModal} 
-                tripId={tripId} 
-                tripDetailsInfo={tripDetailsInfo}/> : null}
+            {childModal === 'updateFlightModal' ? <UpdateFlightModal
+                openChildModal={openChildModal}
+                tripDetailsInfo={tripDetailsInfo} /> : null
+            }
 
+            {childModal === 'updateHotelModal' ? <UpdateHotelModal
+                    openChildModal={openChildModal}
+                    tripDetailsInfo={tripDetailsInfo}
+                /> : null
+            }
         </>
     )
 }

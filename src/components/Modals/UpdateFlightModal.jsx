@@ -2,11 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 const UpdateFlightModal = ({ tripDetailsInfo, openChildModal }) => {
-    // const [departingFrom, setDepartingFrom] = useState('');
-    // const [arrivalTo, setArrivalTo] = useState('');
-    // const [flightPrice, setFlightPrice] = useState('');
-    // const [departureDate, setDepartureDate] = useState('');
-    // const [returnDate, setReturnDate] = useState('');
     const [updatedFlightData, setUpdatedFlightData] = useState({
         flightId: tripDetailsInfo.flightId,
         departingFrom: tripDetailsInfo.departingFrom,
