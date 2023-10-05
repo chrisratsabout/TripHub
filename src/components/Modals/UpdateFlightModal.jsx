@@ -1,45 +1,41 @@
 import axios from "axios";
 import { useState } from "react";
 
-const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
-    const [departingFrom, setDepartingFrom] = useState('');
-    const [arrivalTo, setArrivalTo] = useState('');
-    const [flightPrice, setFlightPrice] = useState('');
-    const [departureDate, setDepartureDate] = useState('');
-    const [returnDate, setReturnDate] = useState('');
+const UpdateFlightModal = ({ tripDetailsInfo, openChildModal }) => {
+    // const [departingFrom, setDepartingFrom] = useState('');
+    // const [arrivalTo, setArrivalTo] = useState('');
+    // const [flightPrice, setFlightPrice] = useState('');
+    // const [departureDate, setDepartureDate] = useState('');
+    // const [returnDate, setReturnDate] = useState('');
+    const [updatedFlightData, setUpdatedFlightData] = useState({
+        flightId: tripDetailsInfo.flightId,
+        departingFrom: tripDetailsInfo.departingFrom,
+        arrivalTo: tripDetailsInfo.arrivalTo,
+        flightPrice: tripDetailsInfo.flightPrice,
+        departureDate: tripDetailsInfo.departureDate,
+        returnDate: tripDetailsInfo.returnDate
+    })
     const [successMsg, setSuccessMsg] = useState(false);
     const [failureMsg, setFailureMsg] = useState(false);
 
+    const handleChange = (e) => {
+        const changedField = e.target.name;
+        const newValue = e.target.value;
+        
+        setUpdatedFlightData(currData => {
+            return {
+                ...currData,
+                [changedField]: newValue,
+            }
+        })
+    }
+
     function handleFlightUpdateSubmit(e) {
         e.preventDefault();
-        console.log(tripDetailsInfo.flightId)
-        console.log(departingFrom)
-        if(departingFrom === ""){
-            console.log("this is null")
-            setDepartingFrom(tripDetailsInfo.departingFrom)
-        }
-        if(arrivalTo === ""){
-            console.log("this is null")
-            setArrivalTo(tripDetailsInfo.arrivalTo)
-        }
-        if(departureDate === ""){
-            console.log("this is null")
-            setDepartureDate(tripDetailsInfo.departureDate)
-        }
-        if(returnDate === ""){
-            console.log("this is null")
-            setReturnDate(tripDetailsInfo.returnDate)
-        }
-        if(flightPrice === ""){
-            console.log("this is null")
-            setFlightPrice(tripDetailsInfo.flightPrice)
-        }
-        const updatedFlightInfo = { flightId: tripDetailsInfo.flightId, departingFrom, arrivalTo, departureDate, returnDate, flightPrice }
-        console.log(updatedFlightInfo)
-
+        console.log(updatedFlightData)
         // send post request
 
-            axios.put('http://localhost:8080/flights/update/' + tripDetailsInfo.flightId, updatedFlightInfo)
+            axios.put('http://localhost:8080/flights/update/' + tripDetailsInfo.flightId, updatedFlightData)
             .then((res) => {
                 console.log(res);
                 setTimeout(()=> {
@@ -67,18 +63,18 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openChildModal(null) }}></i>
                 <h3>Update Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" name='departingFrom' placeholder='e.g. Boston' defaultValue={tripDetailsInfo.departingFrom} onChange={(e)=> {setDepartingFrom(e.target.value)}} required />
+                <input type="text" value={updatedFlightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} required />
                 <label htmlFor="arrival-to">Arrival To:</label>
-                <input type="text" name='arrivalTo' placeholder='e.g. Dublin' defaultValue={tripDetailsInfo.arrivalTo} onChange={(e) => setArrivalTo(e.target.value)} required />
+                <input type="text" value={updatedFlightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin'  onChange={handleChange} required />
                 <label htmlFor="departure-date">Departure Date:</label>
-                <input type="date" name="departure-date" id="departureDate" defaultValue={tripDetailsInfo.departureDate} onChange={(e) => setDepartureDate(e.target.value)} required />
+                <input type="date" value={updatedFlightData.departureDate} name="departureDate" id="departureDate"  onChange={handleChange}required />
                 <label htmlFor="return-date">Return Date:</label>
-                <input type="date" name="return-date" id="returnDate" defaultValue={tripDetailsInfo.returnDate} onChange={(e)=> setReturnDate(e.target.value)} required />
+                <input type="date" value={updatedFlightData.returnDate} name="returnDate" id="returnDate"  onChange={handleChange} required />
                 <label htmlFor="flight-price">Flight Price:</label>
-                <input type="number" name="flightPrice" id="flight-price" step="any" placeholder='e.g. 599.99' defaultValue={tripDetailsInfo.flightPrice} onChange={(e)=> setFlightPrice(e.target.value)} required />
+                <input type="number" value={updatedFlightData.flightPrice} name="flightPrice" id="flight-price" step="any" placeholder='e.g. 599.99' onChange={handleChange} required />
                 <button className="submit-flight-info-btn">Update Flight Info</button>
-                {successMsg && <p className='success-msg'>Flight Info Added!</p>}
-                {failureMsg && <p className='failure-msg'>ERROR: Flight could not be added.</p>}
+                {successMsg && <p className='success-msg'>Flight Info Updated!</p>}
+                {failureMsg && <p className='failure-msg'>ERROR: Flight could not be updated.</p>}
             </form>
         </div>
    </>

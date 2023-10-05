@@ -17,8 +17,10 @@ const HotelModal = ({ openModal, tripId }) => {
         const changedField = e.target.name;
         const newValue = e.target.value;
         setHotelData(currData => {
-            currData[changedField] = newValue;
-            return {...currData}
+            return {
+                ...currData,
+                [changedField]: newValue,
+            }
         })
     }
 

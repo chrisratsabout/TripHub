@@ -81,12 +81,12 @@ const TripDetailsModal = ({ openModal, tripId }) => {
                         <h5>Hotel Info:</h5>
                         <h6>Hotel Name:</h6>
                         <p>{tripDetailsInfo.hotelName}</p>
+                        <h6>No. of nights:</h6>
+                        <p>{tripDetailsInfo.numberOfNights}</p>
                         <h6>Check In Date:</h6>
                         <p>{tripDetailsInfo.checkInDate}</p>
                         <h6>Checkout Date:</h6>
                         <p>{tripDetailsInfo.checkOutDate}</p>
-                        <h6>No. of nights:</h6>
-                        <p>{tripDetailsInfo.numberOfNights}</p>
                         <h6>Hotel Price:</h6>
                         <p>${tripDetailsInfo.hotelPrice}</p>
                     </div>

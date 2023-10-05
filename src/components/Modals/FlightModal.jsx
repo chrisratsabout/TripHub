@@ -18,8 +18,10 @@ const FlightModal = ({ openModal, tripId }) => {
         const newValue = e.target.value;
 
         setFlightData(currData => {
-            currData[changedField] = newValue;
-            return {...currData}
+            return {
+                ...currData,
+            [changedField]: newValue,
+            }
         })
     }
     function handleFlightSubmit(e) {
