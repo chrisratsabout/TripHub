@@ -4,31 +4,22 @@ import axios from 'axios'
 import UpdateFlightModal from './UpdateFlightModal'
 import UpdateHotelModal from './UpdateHotelModal'
 
-
-
-
 const TripDetailsModal = ({ openModal, tripId }) => {
 
     const [tripDetailsInfo, setTripDetailsInfo] = useState([]);
     const [deleteSuccessMsg, setDeleteSuccessMsg] = useState(false);
     const [childModal, openChildModal] = useState(null)
 
-    function openUpdateFlightModal(e) {
-        console.log(e.target.dataset.id)
-        // openModal(null)
+    function openUpdateFlightModal() {
         openChildModal('updateFlightModal')
     }
 
-    function openUpdateHotelModal(e) {
-        console.log(e.target.dataset.id)
+    function openUpdateHotelModal() {
         openChildModal('updateHotelModal')
     }
 
-
-
-
     function handleDelete(e) {
-        console.log(e.target.dataset.id);
+     
         axios.delete('http://localhost:8080/trip-details/' + tripId)
             .then(res => {
                 console.log(res.data)
@@ -46,7 +37,6 @@ const TripDetailsModal = ({ openModal, tripId }) => {
     useEffect(() => {
         axios.get('http://localhost:8080/trip-details/' + tripId)
             .then(res => {
-                console.log(res.data)
                 setTripDetailsInfo(res.data)
 
             })
@@ -59,7 +49,6 @@ const TripDetailsModal = ({ openModal, tripId }) => {
 
     return (
         <>
-
             <div className="trip-details-modal-container">
                 <div className="trip-details-top-container">
                     <h4>{tripDetailsInfo.tripName}</h4>

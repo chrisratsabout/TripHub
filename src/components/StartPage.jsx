@@ -31,7 +31,6 @@ const StartPage = () => {
                     </Form>
                 </div>
             </div>
-
         </>
     )
 }
@@ -46,8 +45,6 @@ export const handleSubmit = async ({ request }) => {
         startDate: data.get('startDate'),
         endDate: data.get('endDate')
     }
-
-    console.log(submission);
 
     //error handling necessary
     if (submission.tripName == '') {

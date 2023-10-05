@@ -8,43 +8,26 @@ import { Link } from 'react-router-dom'
 
 const Trips = () => {
   const [tripsList, setTripsList] = useState([]);
-  // const [flightModalActive, setFlightModalActive] = useState(false);
-  // const [hotelModalActive, setHotelModalActive] = useState(false);
-  // const [tripDetailsModalActive, setTripDetailsModalActive] = useState(false);
   const [currentModal, openModal] = useState(null);
 
   const [tripId, setTripId] = useState(null)
 
   function showTripDetailsModal(e) {
-    console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
     openModal('tripDetailsModal')
-    // setTripDetailsModalActive(true);
   }
 
   function showFlightModal(e) {
-    console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
     openModal('flightModal');
-    // setFlightModalActive(true);
   }
 
   function showHotelModal(e) {
-    console.log(e.target.parentElement.dataset.id);
     setTripId(e.target.parentElement.dataset.id);
     openModal('hotelModal')
-    // setHotelModalActive(true);
   }
 
   useEffect(() => {
-    // axios.get('http://localhost:8080/trips')
-    //   .then(res => {
-    //     setTripsList(res.data)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-
     const getData = async () => {
       axios.get('http://localhost:8080/trips')
         .then(res => {
@@ -96,10 +79,7 @@ const Trips = () => {
           /> : null
         }
       </div>
-
-
     </>
-
   )
 }
 
