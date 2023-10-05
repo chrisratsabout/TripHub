@@ -53,9 +53,9 @@ const FlightModal = ({ openModal, tripId }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openModal(null) }}></i>
                 <h3>Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" value={flightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} required />
+                <input type="text" value={flightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="arrival-to">Arrival To:</label>
-                <input type="text" value={flightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin' onChange={handleChange} required />
+                <input type="text" value={flightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin' onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="departure-date">Departure Date:</label>
                 <input type="date" value={flightData.departureDate} name="departureDate" id="departureDate" onChange={handleChange} required />
                 <label htmlFor="return-date">Return Date:</label>

@@ -54,7 +54,7 @@ const HotelModal = ({ openModal, tripId }) => {
                 <i className="fa-solid fa-x close-hotel-modal-btn" onClick={() => { openModal(null) }}></i>
                 <h3>Hotel Info:</h3>
                 <label htmlFor="hotel-name">Hotel Name:</label>
-                <input type="text" value={hotelData.hotelName} name='hotelName' placeholder='e.g. Four Seasons' onChange={handleChange} required />
+                <input type="text" value={hotelData.hotelName} name='hotelName' placeholder='e.g. Four Seasons' onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="check-in-date">Check In Date:</label>
                 <input type="date" value={hotelData.checkInDate} name="checkInDate" id="checkInDate" onChange={handleChange} required />
                 <label htmlFor="check-out-date">Checkout Date:</label>

@@ -58,9 +58,9 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openChildModal(null) }}></i>
                 <h3>Update Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" value={updatedFlightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} required />
+                <input type="text" value={updatedFlightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="arrival-to">Arrival To:</label>
-                <input type="text" value={updatedFlightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin'  onChange={handleChange} required />
+                <input type="text" value={updatedFlightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin'  onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="departure-date">Departure Date:</label>
                 <input type="date" value={updatedFlightData.departureDate} name="departureDate" id="departureDate"  onChange={handleChange}required />
                 <label htmlFor="return-date">Return Date:</label>

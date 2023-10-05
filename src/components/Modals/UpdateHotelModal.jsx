@@ -57,7 +57,7 @@ function handleHotelUpdateSubmit(e) {
                 <i className="fa-solid fa-x close-hotel-modal-btn" onClick={() => { openChildModal(null) }}></i>
                 <h3>Update Hotel Info:</h3>
                 <label htmlFor="hotel-name">Hotel Name:</label>
-                <input type="text" value={updatedHotelData.hotelName} name='hotelName' placeholder='e.g. Four Seasons' onChange={handleChange} required />
+                <input type="text" value={updatedHotelData.hotelName} name='hotelName' placeholder='e.g. Four Seasons' onChange={handleChange} autoComplete='off' required />
                 <label htmlFor="check-in-date">Check In Date:</label>
                 <input type="date" value={updatedHotelData.checkInDate} name="checkInDate" id="checkInDate" onChange={handleChange} required />
                 <label htmlFor="check-out-date">Checkout Date:</label>

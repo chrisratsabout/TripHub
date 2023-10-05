@@ -21,7 +21,7 @@ const StartPage = () => {
                     <Form method="post" action='/'>
                         <h1>Trip Details</h1>
                         <label htmlFor="trip-name">Trip Name:</label>
-                        <input type="text" name="tripName" id="trip-name" placeholder='e.g. Family Vacation to Hawaii' />
+                        <input type="text" name="tripName" id="trip-name" placeholder='e.g. Family Vacation to Hawaii' autoComplete='off'/>
                         <label htmlFor="trip-start-date">Start Date:</label>
                         <input type="date" name="startDate" />
                         <label htmlFor="trip-end-date">End Date:</label>
