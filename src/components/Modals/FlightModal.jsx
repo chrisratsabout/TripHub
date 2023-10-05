@@ -3,22 +3,30 @@ import { useState } from 'react'
 import axios from 'axios'
 
 const FlightModal = ({ openModal, tripId }) => {
-
-    const [departingFrom, setDepartingFrom] = useState('');
-    const [arrivalTo, setArrivalTo] = useState('');
-    const [flightPrice, setFlightPrice] = useState('');
-    const [departureDate, setDepartureDate] = useState('');
-    const [returnDate, setReturnDate] = useState('');
+    const [flightData, setFlightData] = useState({
+        departingFrom: "",
+        arrivalTo: "",
+        flightPrice: "",
+        departureDate: "",
+        returnDate: ""
+    })
     const [successMsg, setSuccessMsg] = useState(false);
     const [failureMsg, setFailureMsg] = useState(false);
 
+    const handleChange = (e) => {
+        const changedField = e.target.name;
+        const newValue = e.target.value;
+
+        setFlightData(currData => {
+            currData[changedField] = newValue;
+            return {...currData}
+        })
+    }
     function handleFlightSubmit(e) {
         e.preventDefault();
-        const flightInfo = { departingFrom, arrivalTo, departureDate, returnDate, flightPrice }
-        console.log(flightInfo)
 
         // send post request
-        axios.post('http://localhost:8080/flights/add/' + tripId, flightInfo)
+        axios.post('http://localhost:8080/flights/add/' + tripId, flightData)
             .then((res) => {
                 console.log(res);
                 setTimeout(()=> {
@@ -43,15 +51,15 @@ const FlightModal = ({ openModal, tripId }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openModal(null) }}></i>
                 <h3>Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" name='departingFrom' placeholder='e.g. Boston' onChange={(e)=> setDepartingFrom(e.target.value)} required />
+                <input type="text" value={flightData.departingFrom} name='departingFrom' placeholder='e.g. Boston' onChange={handleChange} required />
                 <label htmlFor="arrival-to">Arrival To:</label>
-                <input type="text" name='arrivalTo' placeholder='e.g. Dublin' onChange={(e) => setArrivalTo(e.target.value)} required />
+                <input type="text" value={flightData.arrivalTo} name='arrivalTo' placeholder='e.g. Dublin' onChange={handleChange} required />
                 <label htmlFor="departure-date">Departure Date:</label>
-                <input type="date" name="departure-date" id="departureDate" onChange={(e) => setDepartureDate(e.target.value)} required />
+                <input type="date" value={flightData.departureDate} name="departureDate" id="departureDate" onChange={handleChange} required />
                 <label htmlFor="return-date">Return Date:</label>
-                <input type="date" name="return-date" id="returnDate" onChange={(e)=> setReturnDate(e.target.value)} required />
+                <input type="date" value={flightData.returnDate} name="returnDate" id="returnDate" onChange={handleChange} required />
                 <label htmlFor="flight-price">Flight Price:</label>
-                <input type="number" name="flightPrice" id="flight-price" step="any" placeholder='e.g. 599.99' onChange={(e)=> setFlightPrice(e.target.value)} required />
+                <input type="number" value={flightData.flightPrice} name="flightPrice" id="flight-price" step="any" placeholder='e.g. 599.99' onChange={handleChange} required />
                 <button className="submit-flight-info-btn">Add Flight Info</button>
                 {successMsg && <p className='success-msg'>Flight Info Added!</p>}
                 {failureMsg && <p className='failure-msg'>ERROR: Flight could not be added.</p>}

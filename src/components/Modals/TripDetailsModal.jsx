@@ -14,8 +14,6 @@ const TripDetailsModal = ({ openModal, tripId }) => {
 
     function openUpdateFlightModal(e) {
         console.log(e.target.dataset.id)
-        console.log("clicked")
-        console.log(tripDetailsInfo)
         // openModal(null)
         openChildModal('updateFlightModal')
     }

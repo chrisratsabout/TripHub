@@ -13,11 +13,33 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
     function handleFlightUpdateSubmit(e) {
         e.preventDefault();
         console.log(tripDetailsInfo.flightId)
+        console.log(departingFrom)
+        if(departingFrom === ""){
+            console.log("this is null")
+            setDepartingFrom(tripDetailsInfo.departingFrom)
+        }
+        if(arrivalTo === ""){
+            console.log("this is null")
+            setArrivalTo(tripDetailsInfo.arrivalTo)
+        }
+        if(departureDate === ""){
+            console.log("this is null")
+            setDepartureDate(tripDetailsInfo.departureDate)
+        }
+        if(returnDate === ""){
+            console.log("this is null")
+            setReturnDate(tripDetailsInfo.returnDate)
+        }
+        if(flightPrice === ""){
+            console.log("this is null")
+            setFlightPrice(tripDetailsInfo.flightPrice)
+        }
         const updatedFlightInfo = { flightId: tripDetailsInfo.flightId, departingFrom, arrivalTo, departureDate, returnDate, flightPrice }
         console.log(updatedFlightInfo)
 
         // send post request
-        axios.patch('http://localhost:8080/flights/update/' + tripDetailsInfo.flightId, updatedFlightInfo)
+
+            axios.put('http://localhost:8080/flights/update/' + tripDetailsInfo.flightId, updatedFlightInfo)
             .then((res) => {
                 console.log(res);
                 setTimeout(()=> {
@@ -26,7 +48,7 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
 
                 setTimeout(() => {
                     location.reload();
-                }, 3000)
+                }, 2000)
             })
             .catch((err) => {
                 console.log("THERE WAS AN ERROR", err)
@@ -34,7 +56,9 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
                     setFailureMsg(true);
                 }, 500)
             })
+  
     }
+
 
   return (
    <>
@@ -43,7 +67,7 @@ const UpdateFlightModal = ({ tripDetailsInfo, openChildModal, tripId }) => {
                 <i className="fa-solid fa-x close-flight-modal-btn" onClick={() => { openChildModal(null) }}></i>
                 <h3>Update Flight Info:</h3>
                 <label htmlFor="departing-from">Departing From:</label>
-                <input type="text" name='departingFrom' placeholder='e.g. Boston' defaultValue={tripDetailsInfo.departingFrom} onChange={(e)=> setDepartingFrom(e.target.value)} required />
+                <input type="text" name='departingFrom' placeholder='e.g. Boston' defaultValue={tripDetailsInfo.departingFrom} onChange={(e)=> {setDepartingFrom(e.target.value)}} required />
                 <label htmlFor="arrival-to">Arrival To:</label>
                 <input type="text" name='arrivalTo' placeholder='e.g. Dublin' defaultValue={tripDetailsInfo.arrivalTo} onChange={(e) => setArrivalTo(e.target.value)} required />
                 <label htmlFor="departure-date">Departure Date:</label>
