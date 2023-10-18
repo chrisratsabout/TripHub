@@ -26,7 +26,7 @@ const HotelModal = ({ openModal, tripId }) => {
 
     function handleHotelSubmit(e){
         e.preventDefault();
-
+      
         axios.post('http://localhost:8080/hotels/add/' + tripId, hotelData)
         .then(res => {
             console.log(res.data)

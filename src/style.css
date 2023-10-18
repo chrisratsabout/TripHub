@@ -248,6 +248,9 @@ button:hover {
 }
 
 /**TRIP DETAILS MODAL */
+.instructions {
+    margin: 0 auto;
+}
 .trip-details-modal-container {
     position: fixed;
     top: 50%;
